@@ -13,8 +13,6 @@ exports.up = function(knex) {
             table.increments();
             table.string('name')
                 .notNullable();
-            table.boolean('agree')
-                .notNullable();
             table.boolean('topThree');
             table.string('comment');
             table.integer('user_id')
