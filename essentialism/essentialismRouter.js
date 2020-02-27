@@ -5,7 +5,7 @@ const Essentialism = require('./essentialismModel');
 const router = express.Router();
 
 router.get('/values/:id', (req, res) => {
-    const {id} = req.param;
+    const {id} = req.params;
 
     Essentialism.findValues(id)
         .then(values => {
@@ -20,7 +20,8 @@ router.get('/values/:id', (req, res) => {
         .catch(err => {
             res.status(500).json({
                 error: 'Failed to get values.'
-            })
+            });
+            console.log(err)
         })
 })
 

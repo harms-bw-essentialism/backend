@@ -3,28 +3,28 @@ exports.seed = function(knex) {
   return knex('values').del()
     .then(function () {
       return knex('values').insert([
-        {
-          name: 'Coffee',
-          topThree: true,
-          comment: 'It gives me life!',
-          user_id: 1
+        {  
+          userId: 1,
+          valueName: 'Coffee',
+          valueTopThree: true,
+          valueComment: 'It gives me life!'
         },
         {
-          name: 'Saying Cheers',
-          topThree: true,
-          comment: 'Gets me started on the right foot.',
-          user_id: 1
+          userId: 1,
+          valueName: 'Saying Cheers',
+          valueTopThree: true,
+          valueComment: 'Gets me started on the right foot.',
         },
         {
-          name: 'Ice Breakers',
-          topThree: true,
-          comment: 'What better way to break the ice?',
-          user_id: 1
+          userId: 1,
+          valueName: 'Ice Breakers',
+          valueTopThree: true,
+          valueComment: 'What better way to break the ice?'
         },
         {
-          name: 'Making Money',
-          topThree: false,
-          user_id: 1
+          userId: 1,
+          valueName: 'Making Money',
+          valueTopThree: false
         }
       ]);
     });

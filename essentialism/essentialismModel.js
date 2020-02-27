@@ -2,16 +2,16 @@ const db = require('../data/dbConfig');
 
 function findValues(id) {
     return db('values')
-        .join('users', 'users.id', 'values.user_id')
+        .join('users', 'users.id', 'values.userId')
         .select(
-            'user.id',
+            'users.id',
             'users.username',
-            'values.id',
-            'values.name', 
-            'values.topThree',
-            'values.comment'
+            'values.id as valueId',
+            'values.valueName', 
+            'values.valueTopThree',
+            'values.valueComment'
         )
-        .where({user_id: id})
+        .where({userId : id})
 };
 
 module.exports = {

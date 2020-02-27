@@ -11,11 +11,11 @@ exports.up = function(knex) {
         })
         .createTable('values', table => {
             table.increments();
-            table.string('name')
+            table.string('valueName')
                 .notNullable();
-            table.boolean('topThree');
-            table.string('comment');
-            table.integer('user_id')
+            table.boolean('valueTopThree');
+            table.string('valueComment');
+            table.integer('userId')
                 .unsigned()
                 .notNullable()
                 .references('id')
@@ -25,10 +25,10 @@ exports.up = function(knex) {
         })
         .createTable('projects', table => {
             table.increments();
-            table.string('name', 64)
+            table.string('projectName', 64)
                 .notNullable();
-            table.string('description');
-            table.integer('user_id')
+            table.string('projectDescription');
+            table.integer('userId')
                 .unsigned()
                 .notNullable()
                 .references('id')
