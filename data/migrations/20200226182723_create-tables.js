@@ -6,7 +6,7 @@ exports.up = function(knex) {
             table.string('username', 64)
                 .unique()
                 .notNullable();
-            table.string('password', 64)
+            table.string('password')
                 .notNullable();
         })
         .createTable('values', table => {
