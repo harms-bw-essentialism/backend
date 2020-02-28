@@ -7,9 +7,16 @@ function add(user) {
 
 function find(user) {
     return db('users')
+};
+
+function remove(id) {
+    return db('users')
+        .delete()
+        .where({id})
 }
 
 module.exports = {
     add,
-    find
+    find,
+    remove
 }

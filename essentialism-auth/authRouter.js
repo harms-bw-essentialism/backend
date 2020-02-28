@@ -36,4 +36,24 @@ router.get('/', (req, res) => {
         })
 })
 
+router.delete('/:id', (req, res) => {
+    const {id} = req.params;
+
+    Essentialism.remove(id)
+        .then(info => {
+            if (info) {
+                res.json({removed: info})
+            } else {
+                res.status(404).json({
+                    error: 'Could not find user with given id'
+                })
+            }
+        })
+        .catch(info => {
+            res.status(500).json({
+                error: 'Failed to delete user'
+            })
+        })
+})
+
 module.exports = router;
