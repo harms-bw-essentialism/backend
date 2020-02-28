@@ -24,6 +24,45 @@ router.post('/register', (req, res) => {
         })
 })
 
+router.post('/login', (req, res) => {
+    let {username, password} = req.body;
+
+    Essentialism.findBy({username})
+        .first()
+        .then(user => {
+            if (user && bcrypt.compareSync(password, user.password)) {
+                const token = genToken(user);
+
+                res.status(200).json({
+                    username: user.name,
+                    token: token
+                })
+            } else {
+                res.status(401).json({
+                    error: 'Invalid Password'
+                })
+            }
+        })
+        .catch(err => {
+            res.status(500).json(err)
+        })
+});
+
+function genToken(user) {
+    const payload = {
+        userid: user.id,
+        usename: user.name
+    };
+
+    const options = {
+        expiresIn: '3h'
+    };
+
+    const token = jwt.sign(payload, secrets.jwtSecret, options);
+
+    return token
+}
+
 router.get('/', (req, res) => {
     Essentialism.find()
         .then(info => {

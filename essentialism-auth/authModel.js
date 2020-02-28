@@ -9,6 +9,11 @@ function find(user) {
     return db('users')
 };
 
+function findBy(user) {
+    return db('users')
+        .where(user)
+}
+
 function remove(id) {
     return db('users')
         .delete()
@@ -18,5 +23,6 @@ function remove(id) {
 module.exports = {
     add,
     find,
+    findBy,
     remove
 }
