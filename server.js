@@ -7,6 +7,6 @@ const server = express();
 
 server.use(express.json());
 server.use('/api/essentialism', EssentialismRouter);
-server.use('/api/essentialism/user', AuthRouter)
+server.use('/api/essentialism/user', AuthRouter);
 
 module.exports = server;
