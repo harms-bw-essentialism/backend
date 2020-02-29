@@ -4,10 +4,10 @@ const Essentialism = require('./essentialismModel');
 
 const router = express.Router();
 
-router.get('/values/:id', (req, res) => {
+router.get('/values/user/:id', (req, res) => {
     const {id} = req.params;
 
-    Essentialism.findValues(id)
+    Essentialism.findUserValues(id)
         .then(values => {
             if (values) {
                 res.status(200).json(values)
@@ -36,6 +36,31 @@ router.post('/values', (req, res) => {
             res.status(500).json({
                 error: 'Failed to post value.'
             })
+        })
+})
+
+router.put('/values/:id', (req, res) => {
+    const {id} = req.params;
+    const changes = req.body;
+
+    Essentialism.findById(id)
+        .then(info => {
+            if (info) {
+                Essentialism.updateValue(changes, id)
+                    .then(update => {
+                        res.status(204).json(update)
+                    })
+            } else {
+                res.status(404).json({
+                    error: 'There is no value with that id.'
+                })
+            }
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: 'Failed to update value.'
+            })
+            console.log(err)
         })
 })
 

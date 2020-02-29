@@ -1,6 +1,6 @@
 const db = require('../data/dbConfig');
 
-function findValues(id) {
+function findUserValues(id) {
     return db('values')
         .join('users', 'users.id', 'values.userId')
         .select(
@@ -14,12 +14,25 @@ function findValues(id) {
         .where({userId : id})
 };
 
+function findById(id) {
+    return db('values')
+        .where({id})
+}
+
 function addValue(value) {
     return db('values')
         .insert(value)
 }
 
+function updateValue(value, id) {
+    return db('values')
+        .where({id})
+        .update(value)
+}
+
 module.exports = {
-    findValues,
-    addValue
+    findUserValues,
+    findById,
+    addValue,
+    updateValue
 }
