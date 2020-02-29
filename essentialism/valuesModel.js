@@ -23,12 +23,12 @@ function findById(id) {
         .where({id})
 }
 
-function addValue(value) {
+function add(value) {
     return db('values')
         .insert(value)
 }
 
-function updateValue(value, id) {
+function update(value, id) {
     return db('values')
         .where({id})
         .update(value)
@@ -44,7 +44,7 @@ module.exports = {
     find,
     findUserValues,
     findById,
-    addValue,
-    updateValue,
+    add,
+    update,
     remove
 }

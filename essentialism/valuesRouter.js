@@ -1,11 +1,11 @@
 const express = require('express');
 
-const Essentialism = require('./valuesModel');
+const Values = require('./valuesModel');
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    Essentialism.find()
+    Values.find()
         .then(values => {
             res.status(200).json(values)
         })
@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 router.get('/user/:id', (req, res) => {
     const {id} = req.params;
 
-    Essentialism.findUserValues(id)
+    Values.findUserValues(id)
         .then(values => {
             if (values) {
                 res.status(200).json(values)
@@ -40,7 +40,7 @@ router.get('/user/:id', (req, res) => {
 router.post('/', (req, res) => {
     const value = req.body
 
-    Essentialism.addValue(value)
+    Values.add(value)
         .then(info => {
             res.status(201).json(info);
         })
@@ -55,10 +55,10 @@ router.put('/:id', (req, res) => {
     const {id} = req.params;
     const changes = req.body;
 
-    Essentialism.findById(id)
+    Values.findById(id)
         .then(info => {
             if (info) {
-                Essentialism.updateValue(changes, id)
+                Values.update(changes, id)
                     .then(update => {
                         res.status(204).json(update)
                     })
@@ -79,7 +79,7 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
     const {id} = req.params;
 
-    Essentialism.remove(id)
+    Values.remove(id)
         .then(value => {
             if (value) {
                 res.status(200).json({removed: value})
