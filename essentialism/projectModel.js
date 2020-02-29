@@ -20,10 +20,16 @@ function findUserProjects(id) {
             'projects.projectDescription'
         )
         .where({userId: id})
+};
+
+function add(project) {
+    return db('projects')
+        .insert(project)
 }
 
 module.exports = {
     find,
     findById,
-    findUserProjects
+    findUserProjects,
+    add
 }

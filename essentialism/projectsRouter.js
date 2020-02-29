@@ -55,6 +55,20 @@ router.get('/user/:id', (req, res) => {
             });
             console.log(err)
         })
+});
+
+router.post('/', (req, res) => {
+    const project = req.body;
+
+    Projects.add(project)
+        .then(info => {
+            res.status(201).json(info)
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: 'Failed to post project.'
+            })
+        })
 })
 
 module.exports = router
