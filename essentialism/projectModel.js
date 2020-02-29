@@ -33,10 +33,17 @@ function update(value, id) {
         .update(value)
 }
 
+function remove(id) {
+    return db('projects')
+        .where({id})
+        .delete()
+}
+
 module.exports = {
     find,
     findById,
     findUserProjects,
     add,
-    update
+    update,
+    remove
 }
