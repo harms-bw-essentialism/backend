@@ -16,6 +16,26 @@ router.get('/', (req, res) => {
         })
 })
 
+router.get('/:id', (req, res) => {
+    const {id} = req.params;
+    
+    Values.findById(id)
+        .then(value => {
+            if (value) {
+                res.status(200).json(value)
+            } else {
+                res.status(400).json({
+                    error: 'There is no value with that id'
+                })
+            }
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: 'Could not get value.'
+            })
+        })
+})
+
 router.get('/user/:id', (req, res) => {
     const {id} = req.params;
 
