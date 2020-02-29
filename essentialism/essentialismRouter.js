@@ -23,6 +23,20 @@ router.get('/values/:id', (req, res) => {
             });
             console.log(err)
         })
+});
+
+router.post('/values', (req, res) => {
+    const value = req.body
+
+    Essentialism.addValue(value)
+        .then(info => {
+            res.status(201).json(info);
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: 'Failed to post value.'
+            })
+        })
 })
 
 module.exports = router

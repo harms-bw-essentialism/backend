@@ -14,6 +14,12 @@ function findValues(id) {
         .where({userId : id})
 };
 
+function addValue(value) {
+    return db('values')
+        .insert(value)
+}
+
 module.exports = {
-    findValues
+    findValues,
+    addValue
 }
