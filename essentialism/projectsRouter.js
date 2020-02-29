@@ -34,6 +34,27 @@ router.get('/:id', (req, res) => {
                 error: 'Could not get project.'
             })
         })
+});
+
+router.get('/user/:id', (req, res) => {
+    const {id} = req.params;
+
+    Projects.findUserProjects(id)
+        .then(info => {
+            if (info) {
+                res.status(200).json(info)
+            } else {
+                res.status(400).json({
+                    error: 'Could not find projects for user.'
+                })
+            }
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: 'Failed to get projects.'
+            });
+            console.log(err)
+        })
 })
 
 module.exports = router
