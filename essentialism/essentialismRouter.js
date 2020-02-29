@@ -79,10 +79,10 @@ router.put('/values/:id', (req, res) => {
 router.delete('/values/:id', (req, res) => {
     const {id} = req.params;
 
-    Essentialism.remove()
+    Essentialism.remove(id)
         .then(value => {
             if (value) {
-                res.json({removed: deleted})
+                res.status(200).json({removed: value})
             } else {
                 res.status(404).json({
                     error: 'Could not find value with given id'
@@ -94,6 +94,6 @@ router.delete('/values/:id', (req, res) => {
                 error: 'Could not delete value.'
             })
         })
-})
+});
 
 module.exports = router
