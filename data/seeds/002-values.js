@@ -23,7 +23,7 @@ exports.seed = function(knex) {
         },
         {
           userId: 1,
-          valueName: 'Making Money',
+          valueName: 'Using Trello',
           valueTopThree: false
         }
       ]);
