@@ -27,9 +27,16 @@ function add(project) {
         .insert(project)
 }
 
+function update(value, id) {
+    return db('projects')
+        .where({id})
+        .update(value)
+}
+
 module.exports = {
     find,
     findById,
     findUserProjects,
-    add
+    add,
+    update
 }
