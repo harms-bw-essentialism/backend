@@ -1,5 +1,9 @@
 const db = require('../data/dbConfig');
 
+function find() {
+    return db('values')
+}
+
 function findUserValues(id) {
     return db('values')
         .join('users', 'users.id', 'values.userId')
@@ -30,9 +34,17 @@ function updateValue(value, id) {
         .update(value)
 }
 
+function remove(id) {
+    return db('values')
+        .where({id})
+        .delete()
+}
+
 module.exports = {
+    find,
     findUserValues,
     findById,
     addValue,
-    updateValue
+    updateValue,
+    remove
 }
