@@ -21,7 +21,7 @@ router.get('/:id', (req, res) => {
 
     Projects.findById(id)
         .then(project => {
-            if (project) {
+            if (project.length != 0) {
                 res.status(200).json(project)
             } else {
                 res.status(400).json({
