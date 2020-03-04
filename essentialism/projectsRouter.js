@@ -21,7 +21,7 @@ router.get('/:id', (req, res) => {
 
     Projects.findById(id)
         .then(project => {
-            if (project) {
+            if (project.length != 0) {
                 res.status(200).json(project)
             } else {
                 res.status(400).json({
@@ -41,7 +41,7 @@ router.get('/user/:id', (req, res) => {
 
     Projects.findUserProjects(id)
         .then(info => {
-            if (info) {
+            if (info.length != 0) {
                 res.status(200).json(info)
             } else {
                 res.status(400).json({
@@ -77,7 +77,7 @@ router.put('/:id', (req, res) => {
 
     Projects.findById(id)
         .then(info => {
-            if (info) {
+            if (info.length != 0) {
                 Projects.update(changes, id)
                     .then(update => {
                         res.status(204).json(update)
