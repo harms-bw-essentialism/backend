@@ -27,7 +27,7 @@ describe('Project routes', () => {
         })
     });
 
-    describe('Get /:id', () => {
+    describe('Get /:id', () => {       
         it('Should return 200', (done) => {
             request(server)
                 .get('/api/essentialism/projects/1')
@@ -39,43 +39,7 @@ describe('Project routes', () => {
                 .expect(400, done)
         })        
     });
-
-    describe('Get /user/:id', () => {
-        it('Should return 200', (done) => {            
-            request(server)
-                .get('/api/essentialism/projects/user/1')
-                .expect(200, done)
-        })
-        it('Should return 400', (done) => {
-            request(server)
-                .get('/api/essentialism/projects/user/10')
-                .expect(400, done)
-        })
-    });
-
-    describe('Put /:id', () => {
-        it('Should return 204', (done) => {
-            request(server)
-                .put('/api/essentialism/projects/1')
-                .send({
-                    projectName: 'Test',
-                    projectDescription: 'Testing', 
-                    userId: 1
-                })
-                .expect(204, done)
-        })
-        it('Should return 404', (done) => {
-            request(server)
-                .put('/api/essentialism/projects/10')
-                .send({
-                    projectName: 'Test',
-                    projectDescription: 'Testing', 
-                    userId: 1
-                })
-                .expect(404, done)
-        })
-    })
-
+    
     describe('Delete /:id', () => {
         it('Should return 204', (done) => {
             request(server)
