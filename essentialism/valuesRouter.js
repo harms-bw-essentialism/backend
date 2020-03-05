@@ -21,7 +21,7 @@ router.get('/:id', (req, res) => {
     
     Values.findById(id)
         .then(value => {
-            if (value) {
+            if (value.length != 0) {
                 res.status(200).json(value)
             } else {
                 res.status(400).json({
@@ -41,7 +41,7 @@ router.get('/user/:id', (req, res) => {
 
     Values.findUserValues(id)
         .then(values => {
-            if (values) {
+            if (values.length != 0) {
                 res.status(200).json(values)
             } else {
                 res.status(400).json({
@@ -102,7 +102,7 @@ router.delete('/:id', (req, res) => {
     Values.remove(id)
         .then(value => {
             if (value) {
-                res.status(200).json({removed: value})
+                res.status(204).json({removed: value})
             } else {
                 res.status(404).json({
                     error: 'Could not find value with given id'
