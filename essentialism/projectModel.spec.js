@@ -2,10 +2,11 @@ const db = require('../data/dbConfig');
 const projects = require('./projectModel');
 
 describe('Projects model', () => {
-
-    describe('add', () => {
+    beforeAll(() => {
         db('projects').truncate();
+    })
 
+    describe('add', () => { 
         it('Should insert project into db', async () => {
             await projects.add({projectName: 'Test', userId: 1});
             const projectsDB = await db('projects');
