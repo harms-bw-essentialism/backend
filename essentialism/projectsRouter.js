@@ -1,10 +1,10 @@
 const express = require('express');
-
+const auth = require('../essentialism-auth/authMiddleWare')
 const Projects = require('./projectModel');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/', auth, (req, res) => {
     Projects.find()
         .then(projects => {
             res.status(200).json(projects)
@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
         })
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', auth, (req, res) => {
     const {id} = req.params;
 
     Projects.findById(id)
@@ -36,7 +36,7 @@ router.get('/:id', (req, res) => {
         })
 });
 
-router.get('/user/:id', (req, res) => {
+router.get('/user/:id', auth, (req, res) => {
     const {id} = req.params;
 
     Projects.findUserProjects(id)
@@ -57,7 +57,7 @@ router.get('/user/:id', (req, res) => {
         })
 });
 
-router.post('/', (req, res) => {
+router.post('/', auth, (req, res) => {
     const project = req.body;
 
     Projects.add(project)
@@ -71,7 +71,7 @@ router.post('/', (req, res) => {
         })
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', auth, (req, res) => {
     const {id} = req.params;
     const changes = req.body;
 
@@ -95,7 +95,7 @@ router.put('/:id', (req, res) => {
         })
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', auth, (req, res) => {
     const {id} = req.params;
 
     Projects.remove(id)
