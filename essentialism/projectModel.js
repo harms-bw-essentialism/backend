@@ -17,7 +17,8 @@ function findUserProjects(id) {
             'users.username',
             'projects.id as projectId',
             'projects.projectName',
-            'projects.projectDescription'
+            'projects.projectDescription',
+            'projects.value'
         )
         .where({userId: id})
 };
