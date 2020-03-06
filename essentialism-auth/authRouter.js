@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const secrets = require('../secrets');
+const auth = require('./authMiddleWare')
 
 const Essentialism = require('./authModel');
 
@@ -63,7 +64,7 @@ function genToken(user) {
     return token
 }
 
-router.get('/', (req, res) => {
+router.get('/', auth, (req, res) => {
     Essentialism.find()
         .then(info => {
             res.status(200).json(info);
@@ -75,7 +76,7 @@ router.get('/', (req, res) => {
         })
 })
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', auth, (req, res) => {
     const {id} = req.params;
 
     Essentialism.remove(id)
