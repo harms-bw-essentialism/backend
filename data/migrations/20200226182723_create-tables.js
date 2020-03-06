@@ -28,6 +28,7 @@ exports.up = function(knex) {
             table.string('projectName', 64)
                 .notNullable();
             table.string('projectDescription');
+            table.string('value');
             table.integer('userId')
                 .unsigned()
                 .notNullable()
