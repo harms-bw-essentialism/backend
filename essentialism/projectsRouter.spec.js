@@ -68,6 +68,46 @@ describe('Project routes', () => {
                 .get('/api/essentialism/projects/4')
                 .set('authorization', token)
                 .expect(400, done)
+        })  
+        it('Should return json', () => {
+            request(server)
+                .get('/api/essentialism/projects/1')
+                .set('authorization', token)
+                .expect('Content-Type', /json/);
+        })      
+    });
+
+    describe('Get /user/:id', () => {
+        it('Should return 200', (done) => {
+            request(server)
+                .get('/api/essentialism/projects/user/1')
+                .set('authorization', token)
+                .expect(200, done)
+        })
+        it('Should return 400', (done) => {
+            request(server)
+                .get('/api/essentialism/projects/user/10')
+                .set('authorization', token)
+                .expect(400, done) 
+        })
+    });
+
+    describe('Put /:id', () => {
+        it('Should return 204', (done) => {
+            request(server)                
+                .put('/api/essentialism/projects/1')
+                .set('authorization', token)
+                .send({projectName: 'Test', projectDescription: 'Test', userId: 1})
+                .expect(204, done);
+        })
+        it('Should have length 1', async () => {
+            const projectDB = await db('projects');
+            expect(projectDB).toHaveLength(1);
+        })   
+        it('Should return Test', async () => {
+            const projectDB = await db('projects');
+            const project = projectDB[0];
+            expect(project.projectDescription).toBe('Test')
         })        
     });
     

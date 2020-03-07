@@ -59,7 +59,34 @@ describe('Value routes', () => {
                 .get('/api/essentialism/values/4')
                 .set('authorization', token)
                 .expect(400, done)
+        })
+        it('Should return json', () => {
+            request(server)
+                .get('/api/essentialism/values')
+                .set('authorization', token)
+                .expect('Content-Type', /json/);
         })        
+    });
+
+    describe('Get /user/:id', () => {
+        it('Should return 200', (done) => {
+            request(server)
+                .get('/api/essentialism/values/user/1')
+                .set('authorization', token)
+                .expect(200, done)
+        })
+        it('Should return 400', (done) => {
+            request(server)
+                .get('/api/essentialism/values/user/10')
+                .set('authorization', token)
+                .expect(400, done)
+        })
+        it('Should return json', () => {
+            request(server)
+                .get('/api/essentialism/values/user/1')
+                .set('authorization', token)
+                .expect('Content-Type', /json/);
+        })     
     });
 
     describe('Put /:id', () => {
@@ -84,8 +111,8 @@ describe('Value routes', () => {
             const value = valuesDB[0];
             expect(value.valueName).toBe('Test')
         })        
-    })
-
+    });
+    
     describe('Delete /:id', () => {
         it('Should return 204', (done) => {
             request(server)

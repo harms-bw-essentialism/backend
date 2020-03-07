@@ -78,8 +78,7 @@ describe('Auth routes', () => {
         })
         it('Return an empty db.users', async () => {
             const usersDB = await db('users');
-            expect(usersDB).toHaveLength(1)
-                
+            expect(usersDB).toHaveLength(1);                
         })
     })
 })
