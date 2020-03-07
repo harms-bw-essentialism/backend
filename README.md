@@ -6,11 +6,12 @@ Test user: username: Michael      password: pass
 
 User Endpoints
 
-Method          Endpoint                Description
-POST            /user/register          Registers a new user. Requires username and password
-POST            /user/login             Logs in a user. Requires username and password
-GET             /user                   Returns a list of all users
-DELETE          /user/:id               Removes user from database
+Method | Endpoint | Description
+-------|----------|------------
+POST | /user/register | Registers a new user. Requires username and password
+POST | /user/login | Logs in a user. Requires username and password
+GET | /user | Returns a list of all users
+DELETE | /user/:id | Removes user from database
 
 
 
