@@ -22,12 +22,12 @@ GET | /values | Returns a list of all values
 GET | /values/:id | Returns a specific value. (id = valueId)
 GET | /values/user/:id | Returns the values of a specific user. (id = id of user)
 POST | values | Creates a value.
- | | {
- | |   valueName: string (Required),
- | |   valueTopThree: boolean (Required),
- | |   valueComment: string (Not Required),
- | |   userId: integer (Required)
- | | }
+ | | |{
+ | | |  valueName: string (Required),
+ | | |  valueTopThree: boolean (Required),
+ | | |  valueComment: string (Not Required),
+ | | |  userId: integer (Required)
+ | | |}
 PUT | /values/:id | Edits a value. Use the above format. (id = valueId)
 DELETE | /values/:id | Deletes a value. (id = valueId)
 
@@ -40,10 +40,10 @@ GET | /projects | Returns all projects.
 GET | /projects/:id | Returns a specific project. (id = projectId)
 GET | /projects/user/:id | Returns projects of a specific user. (id = id of user)
 POST | /projects | Creates a project.
- | | {
- | |   projectName: string (Required),
- | |   projectDescription: string (Not Required)
- | | }
+ | | |{
+ | | |  projectName: string (Required),
+ | | |  projectDescription: string (Not Required)
+ | | |}
 PUT | /projects/:id | Edits a value. Use the above format. (id = projectId)
 DELETE | /projects/:id | Delete a project. (id = projectId)
 
