@@ -4,7 +4,7 @@ Base URL: https://essentialism2020.herokuapp.com/api/essentialism
 
 Test user: username: Michael      password: pass
 
-User Endpoints
+**User Endpoints**
 
 Method | Endpoint | Description
 -------|----------|------------
@@ -14,62 +14,38 @@ GET | /user | Returns a list of all users
 DELETE | /user/:id | Removes user from database
 
 
+**Values Endpoints**
 
-Values Endpoints
-Method
-Endpoint
-Description
-GET
-/values
-Returns a list of all values
-GET
-/values/:id
-Returns a specific value. (id = valueId)
-GET
-/values/user/:id
-Returns the values of a specific user. (id = id of user)
-POST
-/values
-Creates a value.
+Method | Endpoint | Description
+-------|----------|------------
+GET | /values | Returns a list of all values
+GET | /values/:id | Returns a specific value. (id = valueId)
+GET | /values/user/:id | Returns the values of a specific user. (id = id of user)
+POST | values | Creates a value.
 {
   valueName: string (Required),
   valueTopThree: boolean (Required),
   valueComment: string (Not Required),
   userId: integer (Required)
 }
-PUT
-/values/:id
-Edits a value. Use the above format. (id = valueId)
-DELETE
-/values/:id
-Deletes a value. (id = valueId)
+PUT | /values/:id | Edits a value. Use the above format. (id = valueId)
+DELETE | /values/:id | Deletes a value. (id = valueId)
 
-Projects Endpoints
-Method
-Endpoint
-Description
-GET
-/projects
-Returns all projects.
-GET
-/projects/:id
-Returns a specific project. (id = projectId)
-GET
-/projects/user/:id
-Returns projects of a specific user. (id = id of user)
-POST
-/projects
-Creates a project.
+
+**Projects Endpoints**
+
+Method | Endpoint | Description
+-------|----------|------------
+GET | /projects | Returns all projects.
+GET | /projects/:id | Returns a specific project. (id = projectId)
+GET | /projects/user/:id | Returns projects of a specific user. (id = id of user)
+POST | /projects | Creates a project.
 {
   projectName: string (Required),
   projectDescription: string (Not Required)
 }
-PUT
-/projects/:id
-Edits a value. Use the above format. (id = projectId)
-DELETE
-/projects/:id
-Delete a project. (id = projectId)
+PUT | /projects/:id | Edits a value. Use the above format. (id = projectId)
+DELETE | /projects/:id | Delete a project. (id = projectId)
 
 
 
